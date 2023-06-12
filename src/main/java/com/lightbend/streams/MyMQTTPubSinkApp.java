@@ -6,31 +6,29 @@ import akka.actor.CoordinatedShutdown;
 import akka.actor.typed.ActorSystem;
 import akka.actor.typed.Behavior;
 import akka.actor.typed.javadsl.Behaviors;
+import akka.stream.alpakka.mqtt.*;
 import akka.stream.alpakka.mqtt.MqttMessage;
 import akka.stream.alpakka.mqtt.javadsl.*;
 import akka.stream.javadsl.Keep;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
 import akka.util.ByteString;
-import com.google.common.base.Charsets;
 import com.lightbend.actors.UserInitiatedShutdown;
-import com.lightbend.app.CommandEchoApp;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import akka.stream.alpakka.mqtt.*;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 
 public class MyMQTTPubSinkApp {
-    private static final Logger log = LoggerFactory.getLogger(CommandEchoApp.class);
+    private static final Logger log = LoggerFactory.getLogger(MyMQTTPubSinkApp.class);
     private static final Config appConfig = ConfigFactory.load();
 
     public static Behavior<NotUsed> rootBehavior() {
@@ -58,7 +56,7 @@ public class MyMQTTPubSinkApp {
 
             CompletionStage<Done> done = source
                     .map(msg -> {
-                        log.info("Sending to broker -> {}", msg.payload().decodeString(Charsets.UTF_8).toString());
+                        log.info("Sending to broker -> {}", msg.payload().decodeString(UTF_8).toString());
                         return msg;
                     })
                     // left is Unused, right is CompletionStage<Done>
