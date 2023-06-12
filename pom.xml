@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>MQTTStreaming</artifactId>
+    <artifactId>AkkaMQTTPubSub</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -13,8 +13,13 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <scala.binary.version>2.13</scala.binary.version>
+<!--
         <akka.version>2.8.2</akka.version>
         <alpakka.version>6.0.1</alpakka.version>
+-->
+        <akka.version>2.7.0</akka.version>
+        <alpakka.version>5.0.0</alpakka.version>
+
     </properties>
 
     <dependencyManagement>
@@ -39,7 +44,7 @@
         </dependency>
         <dependency>
             <groupId>com.lightbend.akka</groupId>
-            <artifactId>akka-stream-alpakka-mqtt-streaming_${scala.binary.version}</artifactId>
+            <artifactId>akka-stream-alpakka-mqtt_${scala.binary.version}</artifactId>
             <version>${alpakka.version}</version>
         </dependency>
         <dependency>
@@ -52,5 +57,17 @@
             <version>1.2.3</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
