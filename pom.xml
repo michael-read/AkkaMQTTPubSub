@@ -9,16 +9,16 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <scala.binary.version>2.13</scala.binary.version>
-<!--
-        <akka.version>2.8.2</akka.version>
-        <alpakka.version>6.0.1</alpakka.version>
--->
-        <akka.version>2.7.0</akka.version>
-        <alpakka.version>5.0.0</alpakka.version>
+        <akka.version>2.8.4</akka.version>
+        <alpakka.mqtt.version>2.0.0-M6</alpakka.mqtt.version>
+        <akka.grpc.version>2.3.4</akka.grpc.version>
+        <grpc.version>1.54.2</grpc.version>
+        <junit5.jupiter.version>5.10.0</junit5.jupiter.version>
+        <logback.classic.version>1.2.13</logback.classic.version>
 
     </properties>
 
@@ -44,8 +44,8 @@
         </dependency>
         <dependency>
             <groupId>com.lightbend.akka</groupId>
-            <artifactId>akka-stream-alpakka-mqtt_${scala.binary.version}</artifactId>
-            <version>${alpakka.version}</version>
+            <artifactId>akka-stream-alpakka-mqttv5_${scala.binary.version}</artifactId>
+            <version>${alpakka.mqtt.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
@@ -54,7 +54,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>${logback.classic.version}</version>
         </dependency>
     </dependencies>
 

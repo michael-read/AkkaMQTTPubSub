@@ -6,17 +6,17 @@ import akka.actor.CoordinatedShutdown;
 import akka.actor.typed.ActorSystem;
 import akka.actor.typed.Behavior;
 import akka.actor.typed.javadsl.Behaviors;
-import akka.stream.alpakka.mqtt.MqttConnectionSettings;
-import akka.stream.alpakka.mqtt.MqttMessage;
-import akka.stream.alpakka.mqtt.MqttQoS;
-import akka.stream.alpakka.mqtt.MqttSubscriptions;
-import akka.stream.alpakka.mqtt.javadsl.MqttSource;
+import akka.stream.alpakka.mqttv5.MqttConnectionSettings;
+import akka.stream.alpakka.mqttv5.MqttMessage;
+import akka.stream.alpakka.mqttv5.MqttQoS;
+import akka.stream.alpakka.mqttv5.MqttSubscriptions;
+import akka.stream.alpakka.mqttv5.javadsl.MqttSource;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
 import com.lightbend.actors.UserInitiatedShutdown;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
